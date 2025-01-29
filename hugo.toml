@@ -20,7 +20,7 @@ pygmentsCodefencesGuessSyntax = true
 
 [Params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
-subtitle = "備忘録"
+subtitle = "何もわからんエンジニアの備忘録"
 mainSections = ["post", "posts"]
 logo = "img/avatar.png"          # Expecting square dimensions
 favicon = "img/avatar.ico"
