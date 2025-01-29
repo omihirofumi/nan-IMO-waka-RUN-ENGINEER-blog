@@ -4,7 +4,7 @@ title: About me
 comments: false
 ---
 
-I'm `omihirofumi`, a software engineer. Been at it for 5 years now! 🚀
+I'm `omihirofumi`, a software engineer.
 
 Currently working at [3-shake](https://3-shake.com/).   
 
