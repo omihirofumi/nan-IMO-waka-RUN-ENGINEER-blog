@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on nan IMO waka RUN ENGINEER blog</title>
+    <title>Posts on nan IMO waka RUN ENGINEER</title>
     <link>http://localhost:1313/post/</link>
-    <description>Recent content in Posts on nan IMO waka RUN ENGINEER blog</description>
+    <description>Recent content in Posts on nan IMO waka RUN ENGINEER</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
@@ -11,11 +11,11 @@
     <lastBuildDate>Wed, 29 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>記念すべき初投稿！</title>
+      <title>初投稿</title>
       <link>http://localhost:1313/post/2025-01-29-first-post/</link>
       <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
       <guid>http://localhost:1313/post/2025-01-29-first-post/</guid>
-      <description>&lt;p&gt;自己紹介からかな？&lt;/p&gt;&#xA;&lt;p&gt;どーも。何もわからんエンジニアのおーみです。&#xA;世の中からToilを無くすべく、&lt;/p&gt;</description>
+      <description>&lt;p&gt;empty&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
