@@ -70,7 +70,7 @@ func (m *HelloDagger) BuildEnv(source *dagger.Directory) *dagger.Container {
 
 UIも用意されていて、[Dagger Cloud](https://dagger.cloud/)で実行結果のトレースが見れる。
 
-![Dagger Cloud Trace](/img/2025-02-01-dagger/dagger-cloud.png)
+{{< figure src="dagger-cloud.png" alt="Dagger CloudのUI" >}}
 
 
 [Daggerverse](https://daggerverse.dev/)に他の人が開発した`Dagger関数`があるのでそれを利用することもできる。
