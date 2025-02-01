@@ -118,7 +118,7 @@ func (m *HelloDagger) BuildEnv(source *dagger.Directory) *dagger.Container {
   "headline": "DaggerっていうDevOpsツールを触ってみた",
   "description" : "DaggerっていうリリースパイプラインをYamlとかじゃなくてコードで記述するツールを知ったので試してみる。 公式のQuickstartをやってみた。\nGo, Python, TypeScriptで記述できて今回は久しぶりだしGoで書いた。\npackage main import ( \u0026#34;context\u0026#34; \u0026#34;fmt\u0026#34; \u0026#34;math\u0026#34; \u0026#34;math\/rand\u0026#34; \u0026#34;dagger\/hello-dagger\/internal\/dagger\u0026#34; ) type HelloDagger struct{} \/\/ Publish the application container after building and testing it on-the-fly func (m *HelloDagger) Publish(ctx context.Context, source *dagger.Directory) (string, error) { _, err := m.Test(ctx, source) if err != nil { return \u0026#34;\u0026#34;, err } return m.Build(source). Publish(ctx, fmt.Sprintf(\u0026#34;ttl.sh\/hello-dagger-%.0f\u0026#34;, math.Floor(rand.Float64()*10000000))) \/\/#nosec } \/\/ Build the application container func (m *HelloDagger) Build(source *dagger.Directory) *dagger.Container { build := m.BuildEnv(source). WithExec([]string{\u0026#34;npm\u0026#34;, \u0026#34;run\u0026#34;, \u0026#34;build\u0026#34;}). Directory(\u0026#34;.\/dist\u0026#34;) return dag.Container().From(\u0026#34;nginx:1.25-alpine\u0026#34;). WithDirectory(\u0026#34;\/usr\/share\/nginx\/html\u0026#34;, build). WithExposedPort(80) } \/\/ Return the result of running unit tests func (m *HelloDagger) Test(ctx context.Context, source *dagger.Directory) (string, error) { return m.BuildEnv(source). WithExec([]string{\u0026#34;npm\u0026#34;, \u0026#34;run\u0026#34;, \u0026#34;test:unit\u0026#34;, \u0026#34;run\u0026#34;}). Stdout(ctx) } \/\/ Build a ready-to-use development environment func (m *HelloDagger) BuildEnv(source *dagger.Directory) *dagger.Container { nodeCache := dag.CacheVolume(\u0026#34;node\u0026#34;) return dag.Container(). From(\u0026#34;node:21-slim\u0026#34;). WithDirectory(\u0026#34;\/src\u0026#34;, source). WithMountedCache(\u0026#34;\/root\/.npm\u0026#34;, nodeCache). WithWorkdir(\u0026#34;\/src\u0026#34;). WithExec([]string{\u0026#34;npm\u0026#34;, \u0026#34;install\u0026#34;}) } こういう感じで記述してくみたい。\n",
   "inLanguage" : "en",
-  "wordCount":  167 ,
+  "wordCount":  168 ,
   "datePublished" : "2025-02-01T00:00:00\u002b00:00",
   "dateModified" : "2025-02-01T00:00:00\u002b00:00",
   "image" : "http:\/\/localhost:1313\/img\/avatar.png",
@@ -363,7 +363,7 @@ import (
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;167&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;168&nbsp;words
   
   
     
@@ -449,7 +449,7 @@ import (
 今回はローカルで試しているけど、CI上でも実行できる。</p>
 <p>UIも用意されていて、<a href="https://dagger.cloud/">Dagger Cloud</a>で実行結果のトレースが見れる。</p>
 
-<link rel="stylesheet" href="http://localhost:1313/css/hugo-easy-gallery.css" />
+
 <div class="box" >
   <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
@@ -464,7 +464,8 @@ import (
 <p>Cloud Buildのプログラミング版ってイメージかな？<br>
 たしかに、開発者としてプログラミングしていってパイプライン作れるのは便利かも。DevOpsっぽいね。<br>
 あと他の人の車輪を利用できるのも嬉しい。<br>
-ただ、慣れてないだけかもしれないけど、こういうパイプラインは<code>YAML</code>のが宣言的で見やすい気がする。</p>
+ローカルでCIが確認できるのも嬉しい。</p>
+<p>ただ、慣れてないだけかもしれないけど、こういうパイプラインは<code>YAML</code>のが宣言的で見やすい気がする。</p>
 <p>そういえば、
 <a href="https://ttl.sh/">ttl.sh</a>って初めて知ったな。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nf">Build</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span>
