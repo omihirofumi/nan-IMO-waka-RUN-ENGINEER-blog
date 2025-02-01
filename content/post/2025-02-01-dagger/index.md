@@ -1,5 +1,5 @@
 ---
-title: DaggerっていうDevOpsツールを触ってみた
+title: Daggerっていうリリースパイプラインを作って実行するツール触った
 date: 2025-02-01
 tags: ["cicd", "tool", "messing garound "]
 ---
