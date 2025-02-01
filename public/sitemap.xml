@@ -3,15 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/firstpost/</loc>
-    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/cicd/</loc>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/2025-02-01-dagger/</loc>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/messing-garound-/</loc>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/tool/</loc>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/firstpost/</loc>
     <lastmod>2025-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/2025-01-29-first-post/</loc>

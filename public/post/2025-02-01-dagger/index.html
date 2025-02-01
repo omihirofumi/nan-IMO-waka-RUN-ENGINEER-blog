@@ -12,8 +12,62 @@
  
 
 
-      <title>Posts - </title>
+      <title>DaggerっていうDevOpsツールを触ってみた - </title>
 
+  <meta name="description" content="DaggerっていうリリースパイプラインをYamlとかじゃなくてコードで記述するツールを知ったので試してみる。
+公式のQuickstartをやってみた。
+Go, Python, TypeScriptで記述できて今回は久しぶりだしGoで書いた。
+package main
+
+import (
+	&#34;context&#34;
+	&#34;fmt&#34;
+	&#34;math&#34;
+	&#34;math/rand&#34;
+
+	&#34;dagger/hello-dagger/internal/dagger&#34;
+)
+
+type HelloDagger struct{}
+
+// Publish the application container after building and testing it on-the-fly
+func (m *HelloDagger) Publish(ctx context.Context, source *dagger.Directory) (string, error) {
+	_, err := m.Test(ctx, source)
+	if err != nil {
+		return &#34;&#34;, err
+	}
+	return m.Build(source).
+		Publish(ctx, fmt.Sprintf(&#34;ttl.sh/hello-dagger-%.0f&#34;, math.Floor(rand.Float64()*10000000))) //#nosec
+}
+
+// Build the application container
+func (m *HelloDagger) Build(source *dagger.Directory) *dagger.Container {
+	build := m.BuildEnv(source).
+		WithExec([]string{&#34;npm&#34;, &#34;run&#34;, &#34;build&#34;}).
+		Directory(&#34;./dist&#34;)
+	return dag.Container().From(&#34;nginx:1.25-alpine&#34;).
+		WithDirectory(&#34;/usr/share/nginx/html&#34;, build).
+		WithExposedPort(80)
+}
+
+// Return the result of running unit tests
+func (m *HelloDagger) Test(ctx context.Context, source *dagger.Directory) (string, error) {
+	return m.BuildEnv(source).
+		WithExec([]string{&#34;npm&#34;, &#34;run&#34;, &#34;test:unit&#34;, &#34;run&#34;}).
+		Stdout(ctx)
+}
+
+// Build a ready-to-use development environment
+func (m *HelloDagger) BuildEnv(source *dagger.Directory) *dagger.Container {
+	nodeCache := dag.CacheVolume(&#34;node&#34;)
+	return dag.Container().
+		From(&#34;node:21-slim&#34;).
+		WithDirectory(&#34;/src&#34;, source).
+		WithMountedCache(&#34;/root/.npm&#34;, nodeCache).
+		WithWorkdir(&#34;/src&#34;).
+		WithExec([]string{&#34;npm&#34;, &#34;install&#34;})
+}
+こういう感じで記述してくみたい。">
   <meta name="author" content="omihirofumi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -34,14 +88,126 @@
   
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/localhost:1313\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/localhost:1313\/post\/2025-02-01-dagger\/",
+          "name": "Daggerっていう dev opsツールを触ってみた"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "omihirofumi"
+  },
+  "headline": "DaggerっていうDevOpsツールを触ってみた",
+  "description" : "DaggerっていうリリースパイプラインをYamlとかじゃなくてコードで記述するツールを知ったので試してみる。 公式のQuickstartをやってみた。\nGo, Python, TypeScriptで記述できて今回は久しぶりだしGoで書いた。\npackage main import ( \u0026#34;context\u0026#34; \u0026#34;fmt\u0026#34; \u0026#34;math\u0026#34; \u0026#34;math\/rand\u0026#34; \u0026#34;dagger\/hello-dagger\/internal\/dagger\u0026#34; ) type HelloDagger struct{} \/\/ Publish the application container after building and testing it on-the-fly func (m *HelloDagger) Publish(ctx context.Context, source *dagger.Directory) (string, error) { _, err := m.Test(ctx, source) if err != nil { return \u0026#34;\u0026#34;, err } return m.Build(source). Publish(ctx, fmt.Sprintf(\u0026#34;ttl.sh\/hello-dagger-%.0f\u0026#34;, math.Floor(rand.Float64()*10000000))) \/\/#nosec } \/\/ Build the application container func (m *HelloDagger) Build(source *dagger.Directory) *dagger.Container { build := m.BuildEnv(source). WithExec([]string{\u0026#34;npm\u0026#34;, \u0026#34;run\u0026#34;, \u0026#34;build\u0026#34;}). Directory(\u0026#34;.\/dist\u0026#34;) return dag.Container().From(\u0026#34;nginx:1.25-alpine\u0026#34;). WithDirectory(\u0026#34;\/usr\/share\/nginx\/html\u0026#34;, build). WithExposedPort(80) } \/\/ Return the result of running unit tests func (m *HelloDagger) Test(ctx context.Context, source *dagger.Directory) (string, error) { return m.BuildEnv(source). WithExec([]string{\u0026#34;npm\u0026#34;, \u0026#34;run\u0026#34;, \u0026#34;test:unit\u0026#34;, \u0026#34;run\u0026#34;}). Stdout(ctx) } \/\/ Build a ready-to-use development environment func (m *HelloDagger) BuildEnv(source *dagger.Directory) *dagger.Container { nodeCache := dag.CacheVolume(\u0026#34;node\u0026#34;) return dag.Container(). From(\u0026#34;node:21-slim\u0026#34;). WithDirectory(\u0026#34;\/src\u0026#34;, source). WithMountedCache(\u0026#34;\/root\/.npm\u0026#34;, nodeCache). WithWorkdir(\u0026#34;\/src\u0026#34;). WithExec([]string{\u0026#34;npm\u0026#34;, \u0026#34;install\u0026#34;}) } こういう感じで記述してくみたい。\n",
+  "inLanguage" : "en",
+  "wordCount":  167 ,
+  "datePublished" : "2025-02-01T00:00:00\u002b00:00",
+  "dateModified" : "2025-02-01T00:00:00\u002b00:00",
+  "image" : "http:\/\/localhost:1313\/img\/avatar.png",
+  "keywords" : [ "cicd, tool, messing garound " ],
+  "mainEntityOfPage" : "http:\/\/localhost:1313\/post\/2025-02-01-dagger\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/localhost:1313\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/localhost:1313\/img\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-<meta property="og:title" content="Posts" />
+
+<meta property="og:title" content="DaggerっていうDevOpsツールを触ってみた" />
+<meta property="og:description" content="DaggerっていうリリースパイプラインをYamlとかじゃなくてコードで記述するツールを知ったので試してみる。
+公式のQuickstartをやってみた。
+Go, Python, TypeScriptで記述できて今回は久しぶりだしGoで書いた。
+package main
+
+import (
+	&#34;context&#34;
+	&#34;fmt&#34;
+	&#34;math&#34;
+	&#34;math/rand&#34;
+
+	&#34;dagger/hello-dagger/internal/dagger&#34;
+)
+
+type HelloDagger struct{}
+
+// Publish the application container after building and testing it on-the-fly
+func (m *HelloDagger) Publish(ctx context.Context, source *dagger.Directory) (string, error) {
+	_, err := m.Test(ctx, source)
+	if err != nil {
+		return &#34;&#34;, err
+	}
+	return m.Build(source).
+		Publish(ctx, fmt.Sprintf(&#34;ttl.sh/hello-dagger-%.0f&#34;, math.Floor(rand.Float64()*10000000))) //#nosec
+}
+
+// Build the application container
+func (m *HelloDagger) Build(source *dagger.Directory) *dagger.Container {
+	build := m.BuildEnv(source).
+		WithExec([]string{&#34;npm&#34;, &#34;run&#34;, &#34;build&#34;}).
+		Directory(&#34;./dist&#34;)
+	return dag.Container().From(&#34;nginx:1.25-alpine&#34;).
+		WithDirectory(&#34;/usr/share/nginx/html&#34;, build).
+		WithExposedPort(80)
+}
+
+// Return the result of running unit tests
+func (m *HelloDagger) Test(ctx context.Context, source *dagger.Directory) (string, error) {
+	return m.BuildEnv(source).
+		WithExec([]string{&#34;npm&#34;, &#34;run&#34;, &#34;test:unit&#34;, &#34;run&#34;}).
+		Stdout(ctx)
+}
+
+// Build a ready-to-use development environment
+func (m *HelloDagger) BuildEnv(source *dagger.Directory) *dagger.Container {
+	nodeCache := dag.CacheVolume(&#34;node&#34;)
+	return dag.Container().
+		From(&#34;node:21-slim&#34;).
+		WithDirectory(&#34;/src&#34;, source).
+		WithMountedCache(&#34;/root/.npm&#34;, nodeCache).
+		WithWorkdir(&#34;/src&#34;).
+		WithExec([]string{&#34;npm&#34;, &#34;install&#34;})
+}
+こういう感じで記述してくみたい。">
 <meta property="og:image" content="http://localhost:1313/img/avatar.png" />
-<meta property="og:url" content="http://localhost:1313/post/" />
+<meta property="og:url" content="http://localhost:1313/post/2025-02-01-dagger/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="nan IMO waka RUN ENGINEER" />
 
-  <meta name="twitter:title" content="Posts" />
+  <meta name="twitter:title" content="DaggerっていうDevOpsツールを触ってみた" />
+  <meta name="twitter:description" content="DaggerっていうリリースパイプラインをYamlとかじゃなくてコードで記述するツールを知ったので試してみる。
+公式のQuickstartをやってみた。
+Go, Python, TypeScriptで記述できて今回は久しぶりだしGoで書いた。
+package main
+
+import (
+	&#34;context&#34;
+	&#34;fmt&#34;
+	&#34;math&#34; …">
   <meta name="twitter:image" content="http://localhost:1313/img/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@16hokke" />
@@ -183,7 +349,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>Posts</h1>
+                <h1>DaggerっていうDevOpsツールを触ってみた</h1>
               
               
               
@@ -194,10 +360,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on February 1, 2025
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;0&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;0&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;167&nbsp;words
   
   
     
@@ -219,44 +385,10 @@
 
 
     
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        <div class="posts-list">
-          
-            <article class="post-preview">
-    <a href="http://localhost:1313/post/2025-02-01-dagger/">
-        <h2 class="post-title">DaggerっていうDevOpsツールを触ってみた</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on February 1, 2025
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;166&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;omihirofumi
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
         <p><a href="https://dagger.io/">Dagger</a>っていうリリースパイプラインをYamlとかじゃなくてコードで記述するツールを知ったので試してみる。
 公式の<a href="https://docs.dagger.io/quickstart/daggerize">Quickstart</a>をやってみた。</p>
 <p>Go, Python, TypeScriptで記述できて今回は久しぶりだしGoで書いた。</p>
@@ -311,80 +443,126 @@
 </span></span><span class="line"><span class="cl">		<span class="nf">WithExec</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;npm&#34;</span><span class="p">,</span> <span class="s">&#34;install&#34;</span><span class="p">})</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>こういう感じで記述してくみたい。</p>
-        <a href="http://localhost:1313/post/2025-02-01-dagger/" class="post-read-more">[Read More]</a>
-        
-    </div>
+<p><code>Publish</code>を実行するには、<code>dagger call publish --source=.</code>とすればいい。<br>
+メソッド名をスネークケースにしたものを<code>dagger call</code>の引数にしたら、そのメソッドが実行できる。<br>
+なので、<code>BuildEnv</code>メソッドを呼びたい時は<code>dagger call build-env --source=.</code><br>
+今回はローカルで試しているけど、CI上でも実行できる。</p>
+<p>UIも用意されていて、<a href="https://dagger.cloud/">Dagger Cloud</a>で実行結果のトレースが見れる。</p>
+<p><img src="/img/2025-02-01-dagger/dagger-cloud.png" alt="Dagger Cloud Trace"></p>
+<p><a href="https://daggerverse.dev/">Daggerverse</a>に他の人が開発した<code>Dagger関数</code>があるのでそれを利用することもできる。</p>
+<h2 id="感想">感想</h2>
+<p>Cloud Buildのプログラミング版ってイメージかな？<br>
+たしかに、開発者としてプログラミングしていってパイプライン作れるのは便利かも。DevOpsっぽいね。<br>
+あと他の人の車輪を利用できるのも嬉しい。<br>
+ただ、慣れてないだけかもしれないけど、こういうパイプラインは<code>YAML</code>のが宣言的で見やすい気がする。</p>
+<p>そういえば、
+<a href="https://ttl.sh/">ttl.sh</a>って初めて知ったな。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nf">Build</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">Publish</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;ttl.sh/hello-dagger-%.0f&#34;</span><span class="p">,</span> <span class="nx">math</span><span class="p">.</span><span class="nf">Floor</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span><span class="o">*</span><span class="mi">10000000</span><span class="p">)))</span> <span class="c1">//#nosec</span>
+</span></span></code></pre></div>
 
-    
-    <div class="blog-tags">
         
-       
-       <a href="http://localhost:1313/tags/cicd/">cicd</a>&nbsp;
+          <div class="blog-tags">
+            
+              
+              <a href="http://localhost:1313/tags/cicd/">cicd</a>&nbsp;
+            
+              
+              <a href="http://localhost:1313/tags/tool/">tool</a>&nbsp;
+            
+              
+              <a href="http://localhost:1313/tags/messing-garound/">messing garound </a>&nbsp;
+            
+          </div>
         
-       
-       <a href="http://localhost:1313/tags/tool/">tool</a>&nbsp;
-        
-       
-       <a href="http://localhost:1313/tags/messing-garound/">messing garound </a>&nbsp;
-         
-    </div>
-    
 
-</article>
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-01-dagger%2f&amp;text=Dagger%e3%81%a3%e3%81%a6%e3%81%84%e3%81%86DevOps%e3%83%84%e3%83%bc%e3%83%ab%e3%82%92%e8%a7%a6%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;via=16hokke" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-01-dagger%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-01-dagger%2f&amp;title=Dagger%e3%81%a3%e3%81%a6%e3%81%84%e3%81%86DevOps%e3%83%84%e3%83%bc%e3%83%ab%e3%82%92%e8%a7%a6%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-01-dagger%2f&amp;title=Dagger%e3%81%a3%e3%81%a6%e3%81%84%e3%81%86DevOps%e3%83%84%e3%83%bc%e3%83%ab%e3%82%92%e8%a7%a6%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-01-dagger%2f&amp;title=Dagger%e3%81%a3%e3%81%a6%e3%81%84%e3%81%86DevOps%e3%83%84%e3%83%bc%e3%83%ab%e3%82%92%e8%a7%a6%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-01-dagger%2f&amp;description=Dagger%e3%81%a3%e3%81%a6%e3%81%84%e3%81%86DevOps%e3%83%84%e3%83%bc%e3%83%ab%e3%82%92%e8%a7%a6%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
           
-            <article class="post-preview">
-    <a href="http://localhost:1313/post/2025-01-29-first-post/">
-        <h2 class="post-title">初投稿</h2>
-        
-        
-        
-    </a>
 
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on January 29, 2025
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;omihirofumi
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>empty</p>
-
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="http://localhost:1313/tags/firstpost/">firstpost</a>&nbsp;
-         
-    </div>
-    
-
-</article>
           
-        </div>
         
-      </div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://localhost:1313/post/2025-01-29-first-post/" data-toggle="tooltip" data-placement="top" title="初投稿">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+      
+
     </div>
   </div>
+</div>
 
       <footer>
   <div class="container">
@@ -434,15 +612,6 @@
                 </a>
               </li>
           
-          
-          <li>
-            <a href="/post/index.xml" title="RSS">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
           
           
         </ul>
