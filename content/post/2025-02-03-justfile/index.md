@@ -2,6 +2,8 @@
 date: '2025-02-03T23:29:52+09:00'
 tags:
 - tool
+- just
+- make
 title: 'justっていうmakeみたいなやつ'
 ---
 [just](https://github.com/casey/just)は`make`コマンドをいろいろ改善したRust制のツール。  
