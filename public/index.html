@@ -220,6 +220,61 @@
           
           
             <article class="post-preview">
+    <a href="http://localhost:1313/post/2025-02-03-justfile/">
+        <h2 class="post-title">justっていうmakeみたいなやつ</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 3, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;27&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;omihirofumi
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><a href="https://github.com/casey/just">just</a>は<code>make</code>コマンドをいろいろ改善したRust制のツールらしい。</p>
+<p>使い方は<code>make</code>とほぼ一緒<br>
+<code>justfile</code>を用意して、<code>just &lt;RECIPE&gt;</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">alias n := new
+</span></span><span class="line"><span class="cl">new name:
+</span></span><span class="line"><span class="cl">  @hugo new --kind post post/{{datetime(&#34;%Y-%m-%d&#34;)}}-{{name}}/index.md
+</span></span></code></pre></div><p>上記はこのブログの投稿を作成する時のコマンド。<br>
+<code>hugo new &quot;test&quot;</code> or <code>hugo n &quot;test</code>を実行すると、<code>hugo new --kind post post/2025-02-03-test/index.md</code>が実行される。</p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+       
+       <a href="http://localhost:1313/tags/tool/">tool</a>&nbsp;
+         
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
     <a href="http://localhost:1313/post/2025-02-03-prisma/">
         <h2 class="post-title">`prisma migrate`の備忘録</h2>
         

@@ -221,10 +221,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on February 3, 2025
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;0&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;0&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;22&nbsp;words
   
   
     
@@ -238,7 +238,28 @@
     </p>
     <div class="post-entry">
         
-        
+        <p>ORMの<a href="https://www.prisma.io/">Prisma</a>でmigrateするときに毎度調べてる気がするので、メモしとく。</p>
+<p>開発用DBの場合は、<code>prisma migrate dev</code><br>
+本番用DBの場合は、<code>prisma migrate deploy</code></p>
+<h3 id="migrate-devとmigrate-deployの差分">migrate devとmigrate deployの差分</h3>
+<p><code>migrate dev</code>(開発用コマンド)だと↓が実行されちゃう</p>
+<ul>
+<li>スキーマ変更がある場合に新しいマイグレーションを作成</li>
+<li>リセットされるケースがある
+<ul>
+<li>マイグレーション履歴に不整合がある</li>
+<li>実際のデータベースのスキーマとマイグレーション履歴の最終状態が不一致</li>
+</ul>
+</li>
+</ul>
+<h3 id="まとめ">まとめ</h3>
+<p>本番用DBに<code>migrate dev</code>しない！<br>
+もしやっちゃうと、、</p>
+<ul>
+<li>DBにマイグレーションしていないスキーマが実行されてしまう（スキーマファイルがマイグレーション履歴より進んでる場合）。</li>
+<li>イレギュラーな状態だとリセットされてデータが吹っ飛ぶ可能性がある。</li>
+</ul>
+
         
     </div>
 

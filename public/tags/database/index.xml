@@ -15,7 +15,7 @@
       <link>http://localhost:1313/post/2025-02-03-prisma/</link>
       <pubDate>Mon, 03 Feb 2025 19:36:53 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
       <guid>http://localhost:1313/post/2025-02-03-prisma/</guid>
-      <description></description>
+      <description>&lt;p&gt;ORMの&lt;a href=&#34;https://www.prisma.io/&#34;&gt;Prisma&lt;/a&gt;でmigrateするときに毎度調べてる気がするので、メモしとく。&lt;/p&gt;&#xA;&lt;p&gt;開発用DBの場合は、&lt;code&gt;prisma migrate dev&lt;/code&gt;&lt;br&gt;&#xA;本番用DBの場合は、&lt;code&gt;prisma migrate deploy&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;migrate-devとmigrate-deployの差分&#34;&gt;migrate devとmigrate deployの差分&lt;/h3&gt;&#xA;&lt;p&gt;&lt;code&gt;migrate dev&lt;/code&gt;(開発用コマンド)だと↓が実行されちゃう&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;スキーマ変更がある場合に新しいマイグレーションを作成&lt;/li&gt;&#xA;&lt;li&gt;リセットされるケースがある&#xA;&lt;ul&gt;&#xA;&lt;li&gt;マイグレーション履歴に不整合がある&lt;/li&gt;&#xA;&lt;li&gt;実際のデータベースのスキーマとマイグレーション履歴の最終状態が不一致&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;まとめ&#34;&gt;まとめ&lt;/h3&gt;&#xA;&lt;p&gt;本番用DBに&lt;code&gt;migrate dev&lt;/code&gt;しない！&lt;br&gt;&#xA;もしやっちゃうと、、&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;DBにマイグレーションしていないスキーマが実行されてしまう（スキーマファイルがマイグレーション履歴より進んでる場合）。&lt;/li&gt;&#xA;&lt;li&gt;イレギュラーな状態だとリセットされてデータが吹っ飛ぶ可能性がある。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
