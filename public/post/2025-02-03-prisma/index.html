@@ -12,9 +12,29 @@
  
 
 
-      <title>初投稿 - </title>
+      <title>`prisma migrate`の備忘録 - </title>
 
-  <meta name="description" content="empty">
+  <meta name="description" content="ORMのPrismaでmigrateするときに毎度調べてる気がするので、メモしとく。
+開発用DBの場合は、prisma migrate dev
+本番用DBの場合は、prisma migrate deploy
+migrate devとmigrate deployの差分
+migrate dev(開発用コマンド)だと↓が実行されちゃう
+
+スキーマ変更がある場合に新しいマイグレーションを作成
+リセットされるケースがある
+
+マイグレーション履歴に不整合がある
+実際のデータベースのスキーマとマイグレーション履歴の最終状態が不一致
+
+
+
+まとめ
+本番用DBにmigrate devしない！
+もしやっちゃうと、、
+
+DBにマイグレーションしていないスキーマが実行されてしまう（スキーマファイルがマイグレーション履歴より進んでる場合）。
+イレギュラーな状態だとリセットされてデータが吹っ飛ぶ可能性がある。
+">
   <meta name="author" content="omihirofumi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -50,8 +70,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "http:\/\/localhost:1313\/post\/2025-01-29-first-post\/",
-          "name": "初投稿"
+          "@id": "http:\/\/localhost:1313\/post\/2025-02-03-prisma\/",
+          "name": "\u0060prisma migrate\u0060の備忘録"
         }
     }]
 }
@@ -62,15 +82,15 @@
   "author": {
     "name" : "omihirofumi"
   },
-  "headline": "初投稿",
-  "description" : "empty\n",
+  "headline": "\u0060prisma migrate\u0060の備忘録",
+  "description" : "ORMのPrismaでmigrateするときに毎度調べてる気がするので、メモしとく。\n開発用DBの場合は、prisma migrate dev\n本番用DBの場合は、prisma migrate deploy\nmigrate devとmigrate deployの差分 migrate dev(開発用コマンド)だと↓が実行されちゃう\nスキーマ変更がある場合に新しいマイグレーションを作成 リセットされるケースがある マイグレーション履歴に不整合がある 実際のデータベースのスキーマとマイグレーション履歴の最終状態が不一致 まとめ 本番用DBにmigrate devしない！\nもしやっちゃうと、、\nDBにマイグレーションしていないスキーマが実行されてしまう（スキーマファイルがマイグレーション履歴より進んでる場合）。 イレギュラーな状態だとリセットされてデータが吹っ飛ぶ可能性がある。 ",
   "inLanguage" : "en",
-  "wordCount":  1 ,
-  "datePublished" : "2025-01-29T00:00:00\u002b00:00",
-  "dateModified" : "2025-01-29T00:00:00\u002b00:00",
+  "wordCount":  22 ,
+  "datePublished" : "2025-02-03T19:36:53\u002b09:00",
+  "dateModified" : "2025-02-03T19:36:53\u002b09:00",
   "image" : "http:\/\/localhost:1313\/img\/avatar.png",
-  "keywords" : [ "firstpost" ],
-  "mainEntityOfPage" : "http:\/\/localhost:1313\/post\/2025-01-29-first-post\/",
+  "keywords" : [ "prisma, database, tool" ],
+  "mainEntityOfPage" : "http:\/\/localhost:1313\/post\/2025-02-03-prisma\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "http:\/\/localhost:1313\/",
@@ -85,15 +105,42 @@
 </script>
 
 
-<meta property="og:title" content="初投稿" />
-<meta property="og:description" content="empty">
+<meta property="og:title" content="`prisma migrate`の備忘録" />
+<meta property="og:description" content="ORMのPrismaでmigrateするときに毎度調べてる気がするので、メモしとく。
+開発用DBの場合は、prisma migrate dev
+本番用DBの場合は、prisma migrate deploy
+migrate devとmigrate deployの差分
+migrate dev(開発用コマンド)だと↓が実行されちゃう
+
+スキーマ変更がある場合に新しいマイグレーションを作成
+リセットされるケースがある
+
+マイグレーション履歴に不整合がある
+実際のデータベースのスキーマとマイグレーション履歴の最終状態が不一致
+
+
+
+まとめ
+本番用DBにmigrate devしない！
+もしやっちゃうと、、
+
+DBにマイグレーションしていないスキーマが実行されてしまう（スキーマファイルがマイグレーション履歴より進んでる場合）。
+イレギュラーな状態だとリセットされてデータが吹っ飛ぶ可能性がある。
+">
 <meta property="og:image" content="http://localhost:1313/img/avatar.png" />
-<meta property="og:url" content="http://localhost:1313/post/2025-01-29-first-post/" />
+<meta property="og:url" content="http://localhost:1313/post/2025-02-03-prisma/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="nan IMO waka RUN ENGINEER" />
 
-  <meta name="twitter:title" content="初投稿" />
-  <meta name="twitter:description" content="empty">
+  <meta name="twitter:title" content="`prisma migrate`の備忘録" />
+  <meta name="twitter:description" content="ORMのPrismaでmigrateするときに毎度調べてる気がするので、メモしとく。
+開発用DBの場合は、prisma migrate dev
+本番用DBの場合は、prisma migrate deploy
+migrate devとmigrate deployの差分
+migrate dev(開発用コマンド)だと↓が実行されちゃう
+
+スキーマ変更がある場合に新しいマイグレーションを作成
+リセットされ …">
   <meta name="twitter:image" content="http://localhost:1313/img/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@16hokke" />
@@ -235,7 +282,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>初投稿</h1>
+                <h1>`prisma migrate`の備忘録</h1>
               
               
               
@@ -243,13 +290,13 @@
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on January 29, 2025
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 3, 2025
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;22&nbsp;words
   
   
     
@@ -275,14 +322,40 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>empty</p>
+        <p>ORMの<a href="https://www.prisma.io/">Prisma</a>でmigrateするときに毎度調べてる気がするので、メモしとく。</p>
+<p>開発用DBの場合は、<code>prisma migrate dev</code><br>
+本番用DBの場合は、<code>prisma migrate deploy</code></p>
+<h3 id="migrate-devとmigrate-deployの差分">migrate devとmigrate deployの差分</h3>
+<p><code>migrate dev</code>(開発用コマンド)だと↓が実行されちゃう</p>
+<ul>
+<li>スキーマ変更がある場合に新しいマイグレーションを作成</li>
+<li>リセットされるケースがある
+<ul>
+<li>マイグレーション履歴に不整合がある</li>
+<li>実際のデータベースのスキーマとマイグレーション履歴の最終状態が不一致</li>
+</ul>
+</li>
+</ul>
+<h3 id="まとめ">まとめ</h3>
+<p>本番用DBに<code>migrate dev</code>しない！<br>
+もしやっちゃうと、、</p>
+<ul>
+<li>DBにマイグレーションしていないスキーマが実行されてしまう（スキーマファイルがマイグレーション履歴より進んでる場合）。</li>
+<li>イレギュラーな状態だとリセットされてデータが吹っ飛ぶ可能性がある。</li>
+</ul>
 
 
         
           <div class="blog-tags">
             
               
-              <a href="http://localhost:1313/tags/firstpost/">firstpost</a>&nbsp;
+              <a href="http://localhost:1313/tags/prisma/">prisma</a>&nbsp;
+            
+              
+              <a href="http://localhost:1313/tags/database/">database</a>&nbsp;
+            
+              
+              <a href="http://localhost:1313/tags/tool/">tool</a>&nbsp;
             
           </div>
         
@@ -297,42 +370,42 @@
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-01-29-first-post%2f&amp;text=%e5%88%9d%e6%8a%95%e7%a8%bf&amp;via=16hokke" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-03-prisma%2f&amp;text=%60prisma%20migrate%60%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2&amp;via=16hokke" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-01-29-first-post%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-03-prisma%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-01-29-first-post%2f&amp;title=%e5%88%9d%e6%8a%95%e7%a8%bf" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-03-prisma%2f&amp;title=%60prisma%20migrate%60%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-01-29-first-post%2f&amp;title=%e5%88%9d%e6%8a%95%e7%a8%bf" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-03-prisma%2f&amp;title=%60prisma%20migrate%60%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-01-29-first-post%2f&amp;title=%e5%88%9d%e6%8a%95%e7%a8%bf" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-03-prisma%2f&amp;title=%60prisma%20migrate%60%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-01-29-first-post%2f&amp;description=%e5%88%9d%e6%8a%95%e7%a8%bf" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2flocalhost%3a1313%2fpost%2f2025-02-03-prisma%2f&amp;description=%60prisma%20migrate%60%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -346,6 +419,17 @@
 
         
           
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/2025-02-01-dagger/">Daggerっていうリリースパイプラインを作って実行するツール触った</a></li>
+                
+              </ul>
 
           
         
@@ -354,10 +438,10 @@
       
         <ul class="pager blog-pager">
           
-          
-            <li class="next">
-              <a href="http://localhost:1313/post/2025-02-01-dagger/" data-toggle="tooltip" data-placement="top" title="Daggerっていうリリースパイプラインを作って実行するツール触った">Next Post &rarr;</a>
+            <li class="previous">
+              <a href="http://localhost:1313/post/2025-02-01-dagger/" data-toggle="tooltip" data-placement="top" title="Daggerっていうリリースパイプラインを作って実行するツール触った">&larr; Previous Post</a>
             </li>
+          
           
         </ul>
       

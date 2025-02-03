@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Database on nan IMO waka RUN ENGINEER</title>
+    <link>http://localhost:1313/tags/database/</link>
+    <description>Recent content in Database on nan IMO waka RUN ENGINEER</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
+    <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
+    <lastBuildDate>Mon, 03 Feb 2025 19:36:53 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>`prisma migrate`の備忘録</title>
+      <link>http://localhost:1313/post/2025-02-03-prisma/</link>
+      <pubDate>Mon, 03 Feb 2025 19:36:53 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/post/2025-02-03-prisma/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
