@@ -8,8 +8,36 @@
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
     <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
-    <lastBuildDate>Mon, 03 Feb 2025 23:29:52 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 09 Feb 2025 19:52:15 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>つぶやき</title>
+      <link>http://localhost:1313/tags/%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8D/</link>
+      <pubDate>Sun, 09 Feb 2025 19:52:15 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>競プロ</title>
+      <link>http://localhost:1313/tags/%E7%AB%B6%E3%83%97%E3%83%AD/</link>
+      <pubDate>Sun, 09 Feb 2025 19:52:15 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/%E7%AB%B6%E3%83%97%E3%83%AD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Just</title>
+      <link>http://localhost:1313/tags/just/</link>
+      <pubDate>Mon, 03 Feb 2025 23:29:52 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/just/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Make</title>
+      <link>http://localhost:1313/tags/make/</link>
+      <pubDate>Mon, 03 Feb 2025 23:29:52 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/make/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Tool</title>
       <link>http://localhost:1313/tags/tool/</link>

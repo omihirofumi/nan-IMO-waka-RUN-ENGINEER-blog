@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>つぶやき on nan IMO waka RUN ENGINEER</title>
+    <link>http://localhost:1313/tags/%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8D/</link>
+    <description>Recent content in つぶやき on nan IMO waka RUN ENGINEER</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
+    <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
+    <lastBuildDate>Sun, 09 Feb 2025 19:52:15 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8D/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>競プロを始めた</title>
+      <link>http://localhost:1313/post/2025-02-09-kyo-pro/</link>
+      <pubDate>Sun, 09 Feb 2025 19:52:15 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/post/2025-02-09-kyo-pro/</guid>
+      <description>&lt;p&gt;最近ゴリゴリにロジックを書くことなくなってて、寂しかったから競プロ始めた。&lt;br&gt;&#xA;やっぱり、プログラミングは楽しいね。&lt;br&gt;&#xA;まだ練習しかしてないけど。&lt;br&gt;&#xA;そして、難しい。楽しい。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

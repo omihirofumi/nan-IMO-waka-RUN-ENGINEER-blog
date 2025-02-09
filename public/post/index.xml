@@ -8,14 +8,21 @@
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
     <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
-    <lastBuildDate>Mon, 03 Feb 2025 23:29:52 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 09 Feb 2025 19:52:15 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>競プロを始めた</title>
+      <link>http://localhost:1313/post/2025-02-09-kyo-pro/</link>
+      <pubDate>Sun, 09 Feb 2025 19:52:15 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/post/2025-02-09-kyo-pro/</guid>
+      <description>&lt;p&gt;最近ゴリゴリにロジックを書くことなくなってて、寂しかったから競プロ始めた。&lt;br&gt;&#xA;やっぱり、プログラミングは楽しいね。&lt;br&gt;&#xA;まだ練習しかしてないけど。&lt;br&gt;&#xA;そして、難しい。楽しい。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>justっていうmakeみたいなやつ</title>
       <link>http://localhost:1313/post/2025-02-03-justfile/</link>
       <pubDate>Mon, 03 Feb 2025 23:29:52 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
       <guid>http://localhost:1313/post/2025-02-03-justfile/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/casey/just&#34;&gt;just&lt;/a&gt;は&lt;code&gt;make&lt;/code&gt;コマンドをいろいろ改善したRust制のツールらしい。&lt;/p&gt;&#xA;&lt;p&gt;使い方は&lt;code&gt;make&lt;/code&gt;とほぼ一緒&lt;br&gt;&#xA;&lt;code&gt;justfile&lt;/code&gt;を用意して、&lt;code&gt;just &amp;lt;RECIPE&amp;gt;&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;alias n := new&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;new name:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  @hugo new --kind post post/{{datetime(&amp;#34;%Y-%m-%d&amp;#34;)}}-{{name}}/index.md&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上記はこのブログの投稿を作成する時のコマンド。&lt;br&gt;&#xA;&lt;code&gt;hugo new &amp;quot;test&amp;quot;&lt;/code&gt; or &lt;code&gt;hugo n &amp;quot;test&lt;/code&gt;を実行すると、&lt;code&gt;hugo new --kind post post/2025-02-03-test/index.md&lt;/code&gt;が実行される。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/casey/just&#34;&gt;just&lt;/a&gt;は&lt;code&gt;make&lt;/code&gt;コマンドをいろいろ改善したRust制のツール。&lt;/p&gt;&#xA;&lt;p&gt;使い方は&lt;code&gt;make&lt;/code&gt;とほぼ一緒&lt;br&gt;&#xA;&lt;code&gt;justfile&lt;/code&gt;を用意して、&lt;code&gt;just &amp;lt;RECIPE&amp;gt;&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;例えば&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;alias n := new&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;new name:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  @hugo new --kind post post/{{datetime(&amp;#34;%Y-%m-%d&amp;#34;)}}-{{name}}/index.md&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;↑このブログの投稿を作成する時のコマンドを&lt;code&gt;just new&lt;/code&gt;で実行できるように設定してみた。&lt;br&gt;&#xA;&lt;code&gt;hugo new &amp;quot;test&amp;quot;&lt;/code&gt; or &lt;code&gt;hugo n &amp;quot;test&lt;/code&gt;を実行すると、&lt;code&gt;hugo new --kind post post/2025-02-03-test/index.md&lt;/code&gt;が実行される。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;env&lt;/code&gt;をロードしたりもできるみたい。&lt;br&gt;&#xA;バリバリ使うことはないと思うけど、&lt;code&gt;make&lt;/code&gt;じゃなくて&lt;code&gt;just&lt;/code&gt;をしばらく使ってこ。&lt;/p&gt;</description>
     </item>
     <item>
       <title>`prisma migrate`の備忘録</title>

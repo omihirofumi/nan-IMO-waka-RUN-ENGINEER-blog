@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lambda on nan IMO waka RUN ENGINEER</title>
+    <link>http://localhost:1313/tags/lambda/</link>
+    <description>Recent content in Lambda on nan IMO waka RUN ENGINEER</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
+    <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
+    <lastBuildDate>Tue, 04 Feb 2025 10:59:50 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>lambda</title>
+      <link>http://localhost:1313/post/2025-02-04-lambda_pnpm_install/</link>
+      <pubDate>Tue, 04 Feb 2025 10:59:50 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/post/2025-02-04-lambda_pnpm_install/</guid>
+      <description>&lt;p&gt;dockerfile in lambdaでpnpm installしてPNPM_HOMEへの権限なくて困った&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
