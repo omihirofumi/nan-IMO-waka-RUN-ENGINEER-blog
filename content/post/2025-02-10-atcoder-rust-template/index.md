@@ -4,6 +4,7 @@ tags:
   - Rust
   - AtCoder
   - tool
+  - 競プロ
 title: 'AtCoderの問題をRustで解くための雛形リポジトリを作った'
 ---
 
