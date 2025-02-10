@@ -48,11 +48,11 @@ fn main() {
 just new <問題番号>
 ```
 
-例えば、`just new abc123` を実行すると、こんな感じのディレクトリ構成になる。
+例えば、`just new no001` を実行すると、こんな感じのディレクトリ構成になる。
 
 ```
 src/
-└── abc123/
+└── no001/
     └── main.rs
 ```
 
@@ -68,8 +68,8 @@ fn main() {
 
 ```toml
 [[bin]]
-name = "abc123"
-path = "src/abc123/main.rs"
+name = "no001"
+path = "src/no001/main.rs"
 ```
 
 ## 実行方法
@@ -79,10 +79,10 @@ path = "src/abc123/main.rs"
 cargo run --bin <問題番号>
 ```
 
-例えば、`abc123` を実行するなら、
+例えば、`no001` を実行するなら、
 
 ```bash
-cargo run --bin abc123
+cargo run --bin no001
 ```
 
 こんな感じで使える。
