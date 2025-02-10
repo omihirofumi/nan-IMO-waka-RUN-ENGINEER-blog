@@ -8,8 +8,29 @@
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
     <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
-    <lastBuildDate>Sun, 09 Feb 2025 19:52:15 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2025 22:00:28 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AtCoder</title>
+      <link>http://localhost:1313/tags/atcoder/</link>
+      <pubDate>Mon, 10 Feb 2025 22:00:28 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/atcoder/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>http://localhost:1313/tags/rust/</link>
+      <pubDate>Mon, 10 Feb 2025 22:00:28 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/rust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tool</title>
+      <link>http://localhost:1313/tags/tool/</link>
+      <pubDate>Mon, 10 Feb 2025 22:00:28 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/tool/</guid>
+      <description></description>
+    </item>
     <item>
       <title>つぶやき</title>
       <link>http://localhost:1313/tags/%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8D/</link>
@@ -36,13 +57,6 @@
       <link>http://localhost:1313/tags/make/</link>
       <pubDate>Mon, 03 Feb 2025 23:29:52 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
       <guid>http://localhost:1313/tags/make/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tool</title>
-      <link>http://localhost:1313/tags/tool/</link>
-      <pubDate>Mon, 03 Feb 2025 23:29:52 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
-      <guid>http://localhost:1313/tags/tool/</guid>
       <description></description>
     </item>
     <item>

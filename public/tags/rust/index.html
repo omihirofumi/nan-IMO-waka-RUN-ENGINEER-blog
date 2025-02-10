@@ -12,7 +12,7 @@
  
 
 
-      <title>競プロ - </title>
+      <title>Rust - </title>
 
   <meta name="author" content="omihirofumi"/><script type="application/ld+json">
 {
@@ -35,13 +35,13 @@
 }
 </script>
 
-<meta property="og:title" content="競プロ" />
+<meta property="og:title" content="Rust" />
 <meta property="og:image" content="http://localhost:1313/img/avatar.png" />
-<meta property="og:url" content="http://localhost:1313/tags/%E7%AB%B6%E3%83%97%E3%83%AD/" />
+<meta property="og:url" content="http://localhost:1313/tags/rust/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="nan IMO waka RUN ENGINEER" />
 
-  <meta name="twitter:title" content="競プロ" />
+  <meta name="twitter:title" content="Rust" />
   <meta name="twitter:image" content="http://localhost:1313/img/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@16hokke" />
@@ -183,7 +183,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="tags-heading">
               
-                <h1>競プロ</h1>
+                <h1>Rust</h1>
               
               
                 <hr class="small">
@@ -207,8 +207,8 @@
         <div class="posts-list">
           
             <article class="post-preview">
-    <a href="http://localhost:1313/post/2025-02-09-kyo-pro/">
-        <h2 class="post-title">競プロを始めた</h2>
+    <a href="http://localhost:1313/post/2025-02-10-atcoder-rust-template/">
+        <h2 class="post-title">AtCoderの問題をRustで解くための雛形リポジトリを作った</h2>
         
         
         
@@ -218,13 +218,13 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on February 9, 2025
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 10, 2025
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;103&nbsp;words
   
   
     
@@ -238,11 +238,34 @@
     </p>
     <div class="post-entry">
         
-        <p>最近ゴリゴリにロジックを書くことなくなってて、寂しかったから競プロ始めた。<br>
-やっぱり、プログラミングは楽しいね。<br>
-まだ練習しかしてないけど。<br>
-そして、難しい。楽しい。</p>
-
+        <p>AtCoderの問題をRustで解くときに、毎回環境を整えるのが面倒だったので、雛形リポジトリを作った。
+<a href="https://github.com/casey/just">just</a> を使って、新しい問題のディレクトリや <code>main.rs</code> をサクッと作れるようにしてる。</p>
+<h2 id="リポジトリ">リポジトリ</h2>
+<p>GitHub に置いてる。
+➡ <a href="https://github.com/omihirofumi/atcoder-rust-base">atcoder-rust-base</a></p>
+<h2 id="セットアップ">セットアップ</h2>
+<p>まず <code>just</code> をインストール。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cargo install just
+</span></span></code></pre></div><h2 id="justfile-の中身"><code>justfile</code> の中身</h2>
+<p><code>just new &lt;問題番号&gt;</code> でディレクトリとファイルを作って、<code>Cargo.toml</code> も更新してくれる。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">main_fn := &#34;&#34;&#34;
+</span></span><span class="line"><span class="cl">fn main() {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">&#34;&#34;&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@new num:
+</span></span><span class="line"><span class="cl">  mkdir -p src/{{num}}
+</span></span><span class="line"><span class="cl">  touch src/{{num}}/main.rs
+</span></span><span class="line"><span class="cl">  echo &#34;{{main_fn}}&#34; &gt; src/{{num}}/main.rs
+</span></span><span class="line"><span class="cl">  echo &#34;[[bin]]&#34; &gt;&gt; Cargo.toml
+</span></span><span class="line"><span class="cl">  echo &#39;name = &#34;{{num}}&#34;&#39; &gt;&gt; Cargo.toml
+</span></span><span class="line"><span class="cl">  echo &#39;path = &#34;src/{{num}}/main.rs&#34;&#39; &gt;&gt; Cargo.toml
+</span></span></code></pre></div><h2 id="使い方">使い方</h2>
+<p>新しい問題の雛形を作るには、</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">just new &lt;問題番号&gt;
+</span></span></code></pre></div><p>例えば、<code>just new abc123</code> を実行すると、こんな感じのディレクトリ構成になる。</p>
+        <a href="http://localhost:1313/post/2025-02-10-atcoder-rust-template/" class="post-read-more">[Read More]</a>
         
     </div>
 
@@ -250,10 +273,13 @@
     <div class="blog-tags">
         
        
-       <a href="http://localhost:1313/tags/%E7%AB%B6%E3%83%97%E3%83%AD/">競プロ</a>&nbsp;
+       <a href="http://localhost:1313/tags/rust/">Rust</a>&nbsp;
         
        
-       <a href="http://localhost:1313/tags/%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8D/">つぶやき</a>&nbsp;
+       <a href="http://localhost:1313/tags/atcoder/">AtCoder</a>&nbsp;
+        
+       
+       <a href="http://localhost:1313/tags/tool/">tool</a>&nbsp;
          
     </div>
     
@@ -316,7 +342,7 @@
           
           
           <li>
-            <a href="/tags/%E7%AB%B6%E3%83%97%E3%83%AD/index.xml" title="RSS">
+            <a href="/tags/rust/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

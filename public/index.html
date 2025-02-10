@@ -49,7 +49,7 @@
   <meta name="twitter:site" content="@16hokke" />
   <meta name="twitter:creator" content="@16hokke" />
   <link href='http://localhost:1313/img/avatar.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.142.0">
+  <meta name="generator" content="Hugo 0.143.1">
   <link rel="alternate" href="http://localhost:1313/index.xml" type="application/rss+xml" title="nan IMO waka RUN ENGINEER"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="http://localhost:1313/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -218,6 +218,86 @@
 
         <div class="posts-list">
           
+          
+            <article class="post-preview">
+    <a href="http://localhost:1313/post/2025-02-10-atcoder-rust-template/">
+        <h2 class="post-title">AtCoderの問題をRustで解くための雛形リポジトリを作った</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 10, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;103&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;omihirofumi
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p>AtCoderの問題をRustで解くときに、毎回環境を整えるのが面倒だったので、雛形リポジトリを作った。
+<a href="https://github.com/casey/just">just</a> を使って、新しい問題のディレクトリや <code>main.rs</code> をサクッと作れるようにしてる。</p>
+<h2 id="リポジトリ">リポジトリ</h2>
+<p>GitHub に置いてる。
+➡ <a href="https://github.com/omihirofumi/atcoder-rust-base">atcoder-rust-base</a></p>
+<h2 id="セットアップ">セットアップ</h2>
+<p>まず <code>just</code> をインストール。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cargo install just
+</span></span></code></pre></div><h2 id="justfile-の中身"><code>justfile</code> の中身</h2>
+<p><code>just new &lt;問題番号&gt;</code> でディレクトリとファイルを作って、<code>Cargo.toml</code> も更新してくれる。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">main_fn := &#34;&#34;&#34;
+</span></span><span class="line"><span class="cl">fn main() {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">&#34;&#34;&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@new num:
+</span></span><span class="line"><span class="cl">  mkdir -p src/{{num}}
+</span></span><span class="line"><span class="cl">  touch src/{{num}}/main.rs
+</span></span><span class="line"><span class="cl">  echo &#34;{{main_fn}}&#34; &gt; src/{{num}}/main.rs
+</span></span><span class="line"><span class="cl">  echo &#34;[[bin]]&#34; &gt;&gt; Cargo.toml
+</span></span><span class="line"><span class="cl">  echo &#39;name = &#34;{{num}}&#34;&#39; &gt;&gt; Cargo.toml
+</span></span><span class="line"><span class="cl">  echo &#39;path = &#34;src/{{num}}/main.rs&#34;&#39; &gt;&gt; Cargo.toml
+</span></span></code></pre></div><h2 id="使い方">使い方</h2>
+<p>新しい問題の雛形を作るには、</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">just new &lt;問題番号&gt;
+</span></span></code></pre></div><p>例えば、<code>just new abc123</code> を実行すると、こんな感じのディレクトリ構成になる。</p>
+        <a href="http://localhost:1313/post/2025-02-10-atcoder-rust-template/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+       
+       <a href="http://localhost:1313/tags/rust/">Rust</a>&nbsp;
+        
+       
+       <a href="http://localhost:1313/tags/atcoder/">AtCoder</a>&nbsp;
+        
+       
+       <a href="http://localhost:1313/tags/tool/">tool</a>&nbsp;
+         
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="http://localhost:1313/post/2025-02-09-kyo-pro/">
@@ -660,7 +740,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.142.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.143.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
