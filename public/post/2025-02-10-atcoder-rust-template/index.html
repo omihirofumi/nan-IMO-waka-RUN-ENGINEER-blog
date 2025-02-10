@@ -40,7 +40,7 @@ fn main() {
 使い方
 新しい問題の雛形を作るには、
 just new &lt;問題番号&gt;
-例えば、just new abc123 を実行すると、こんな感じのディレクトリ構成になる。">
+例えば、just new no001 を実行すると、こんな感じのディレクトリ構成になる。">
   <meta name="author" content="omihirofumi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -89,7 +89,7 @@ just new &lt;問題番号&gt;
     "name" : "omihirofumi"
   },
   "headline": "AtCoderの問題をRustで解くための雛形リポジトリを作った",
-  "description" : "AtCoderの問題をRustで解くときに、毎回環境を整えるのが面倒だったので、雛形リポジトリを作った。 just を使って、新しい問題のディレクトリや main.rs をサクッと作れるようにしてる。\nリポジトリ GitHub に置いてる。 ➡ atcoder-rust-base\nセットアップ まず just をインストール。\ncargo install just justfile の中身 just new \u0026lt;問題番号\u0026gt; でディレクトリとファイルを作って、Cargo.toml も更新してくれる。\nmain_fn := \u0026#34;\u0026#34;\u0026#34; fn main() { } \u0026#34;\u0026#34;\u0026#34; @new num: mkdir -p src\/{{num}} touch src\/{{num}}\/main.rs echo \u0026#34;{{main_fn}}\u0026#34; \u0026gt; src\/{{num}}\/main.rs echo \u0026#34;[[bin]]\u0026#34; \u0026gt;\u0026gt; Cargo.toml echo \u0026#39;name = \u0026#34;{{num}}\u0026#34;\u0026#39; \u0026gt;\u0026gt; Cargo.toml echo \u0026#39;path = \u0026#34;src\/{{num}}\/main.rs\u0026#34;\u0026#39; \u0026gt;\u0026gt; Cargo.toml 使い方 新しい問題の雛形を作るには、\njust new \u0026lt;問題番号\u0026gt; 例えば、just new abc123 を実行すると、こんな感じのディレクトリ構成になる。\n",
+  "description" : "AtCoderの問題をRustで解くときに、毎回環境を整えるのが面倒だったので、雛形リポジトリを作った。 just を使って、新しい問題のディレクトリや main.rs をサクッと作れるようにしてる。\nリポジトリ GitHub に置いてる。 ➡ atcoder-rust-base\nセットアップ まず just をインストール。\ncargo install just justfile の中身 just new \u0026lt;問題番号\u0026gt; でディレクトリとファイルを作って、Cargo.toml も更新してくれる。\nmain_fn := \u0026#34;\u0026#34;\u0026#34; fn main() { } \u0026#34;\u0026#34;\u0026#34; @new num: mkdir -p src\/{{num}} touch src\/{{num}}\/main.rs echo \u0026#34;{{main_fn}}\u0026#34; \u0026gt; src\/{{num}}\/main.rs echo \u0026#34;[[bin]]\u0026#34; \u0026gt;\u0026gt; Cargo.toml echo \u0026#39;name = \u0026#34;{{num}}\u0026#34;\u0026#39; \u0026gt;\u0026gt; Cargo.toml echo \u0026#39;path = \u0026#34;src\/{{num}}\/main.rs\u0026#34;\u0026#39; \u0026gt;\u0026gt; Cargo.toml 使い方 新しい問題の雛形を作るには、\njust new \u0026lt;問題番号\u0026gt; 例えば、just new no001 を実行すると、こんな感じのディレクトリ構成になる。\n",
   "inLanguage" : "en",
   "wordCount":  103 ,
   "datePublished" : "2025-02-10T22:00:28\u002b09:00",
@@ -138,7 +138,7 @@ fn main() {
 使い方
 新しい問題の雛形を作るには、
 just new &lt;問題番号&gt;
-例えば、just new abc123 を実行すると、こんな感じのディレクトリ構成になる。">
+例えば、just new no001 を実行すると、こんな感じのディレクトリ構成になる。">
 <meta property="og:image" content="http://localhost:1313/img/avatar.png" />
 <meta property="og:url" content="http://localhost:1313/post/2025-02-10-atcoder-rust-template/" />
 <meta property="og:type" content="website" />
@@ -361,9 +361,9 @@ justfile …">
 </span></span></code></pre></div><h2 id="使い方">使い方</h2>
 <p>新しい問題の雛形を作るには、</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">just new &lt;問題番号&gt;
-</span></span></code></pre></div><p>例えば、<code>just new abc123</code> を実行すると、こんな感じのディレクトリ構成になる。</p>
+</span></span></code></pre></div><p>例えば、<code>just new no001</code> を実行すると、こんな感じのディレクトリ構成になる。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">src/
-</span></span><span class="line"><span class="cl">└── abc123/
+</span></span><span class="line"><span class="cl">└── no001/
 </span></span><span class="line"><span class="cl">    └── main.rs
 </span></span></code></pre></div><p><code>main.rs</code> の中身はこんな感じ。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -371,13 +371,13 @@ justfile …">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p><code>Cargo.toml</code> にはこんなのが追記される。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">bin</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;abc123&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">path</span> <span class="p">=</span> <span class="s2">&#34;src/abc123/main.rs&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;no001&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">path</span> <span class="p">=</span> <span class="s2">&#34;src/no001/main.rs&#34;</span>
 </span></span></code></pre></div><h2 id="実行方法">実行方法</h2>
 <p>作成した <code>main.rs</code> を実行するには、</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cargo run --bin &lt;問題番号&gt;
-</span></span></code></pre></div><p>例えば、<code>abc123</code> を実行するなら、</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cargo run --bin abc123
+</span></span></code></pre></div><p>例えば、<code>no001</code> を実行するなら、</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cargo run --bin no001
 </span></span></code></pre></div><p>こんな感じで使える。</p>
 
 
@@ -466,6 +466,8 @@ justfile …">
                   <ul>
                 
                 
+                    <li><a href="/post/2025-02-11-atcoder-rust-template-update/">前作ったAtCoderをRustを解くための雛形をアップデートした</a></li>
+                
                     <li><a href="/post/2025-02-09-kyo-pro/">競プロを始めた</a></li>
                 
                     <li><a href="/post/2025-02-03-justfile/">justっていうmakeみたいなやつ</a></li>
@@ -487,6 +489,10 @@ justfile …">
               <a href="http://localhost:1313/post/2025-02-09-kyo-pro/" data-toggle="tooltip" data-placement="top" title="競プロを始めた">&larr; Previous Post</a>
             </li>
           
+          
+            <li class="next">
+              <a href="http://localhost:1313/post/2025-02-11-atcoder-rust-template-update/" data-toggle="tooltip" data-placement="top" title="前作ったAtCoderをRustを解くための雛形をアップデートした">Next Post &rarr;</a>
+            </li>
           
         </ul>
       
