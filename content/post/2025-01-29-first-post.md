@@ -4,4 +4,4 @@ date: 2025-01-29
 tags: ["firstpost"]
 ---
 
-empty
+色々書いてく〜〜
