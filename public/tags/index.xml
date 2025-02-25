@@ -8,8 +8,15 @@
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
     <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
-    <lastBuildDate>Tue, 11 Feb 2025 08:49:31 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2025 20:57:30 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>にっぽー</title>
+      <link>http://localhost:1313/tags/%E3%81%AB%E3%81%A3%E3%81%BD%E3%83%BC/</link>
+      <pubDate>Tue, 25 Feb 2025 20:57:30 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/tags/%E3%81%AB%E3%81%A3%E3%81%BD%E3%83%BC/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AtCoder</title>
       <link>http://localhost:1313/tags/atcoder/</link>

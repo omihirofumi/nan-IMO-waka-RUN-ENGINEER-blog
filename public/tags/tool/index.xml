@@ -15,7 +15,7 @@
       <link>http://localhost:1313/post/2025-02-11-atcoder-rust-template-update/</link>
       <pubDate>Tue, 11 Feb 2025 08:49:31 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
       <guid>http://localhost:1313/post/2025-02-11-atcoder-rust-template-update/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/omihirofumi/atcoder-rust-base&#34;&gt;https://github.com/omihirofumi/atcoder-rust-base&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;(aa)[../2025-02-10-atcoder-rust-template/index.md]&#xA;package名にコンテスト名を設定すると、&lt;code&gt;just browse&lt;/code&gt;でコンテストページに飛ぶようにした。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/omihirofumi/atcoder-rust-base&#34;&gt;https://github.com/omihirofumi/atcoder-rust-base&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;package名にコンテスト名を設定すると、&lt;code&gt;just browse&lt;/code&gt;でコンテストページに飛ぶようにした。&lt;/p&gt;</description>
     </item>
     <item>
       <title>AtCoderの問題をRustで解くための雛形リポジトリを作った</title>
