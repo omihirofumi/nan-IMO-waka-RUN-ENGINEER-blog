@@ -8,8 +8,15 @@
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
     <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
-    <lastBuildDate>Tue, 25 Feb 2025 20:57:30 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Feb 2025 00:28:13 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>にっぽー</title>
+      <link>http://localhost:1313/post/2025-02-27-nippo/</link>
+      <pubDate>Thu, 27 Feb 2025 00:28:13 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/post/2025-02-27-nippo/</guid>
+      <description>&lt;p&gt;LeetCodeの&lt;a href=&#34;https://leetcode.com/problems/movie-rating/description/?envType=problem-list-v2&amp;amp;envId=rvchvayr&#34;&gt;この問題&lt;/a&gt;を↓で解いたけどどうなんだろうか。&lt;br&gt;&#xA;結合対象を減らすためにサブクエリでフィルタリングするようにしたけど、複雑になってしまった。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>にっぽー</title>
       <link>http://localhost:1313/post/2025-02-25-nippo/</link>
@@ -64,7 +71,7 @@
       <link>http://localhost:1313/post/2025-01-29-first-post/</link>
       <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
       <guid>http://localhost:1313/post/2025-01-29-first-post/</guid>
-      <description>&lt;p&gt;empty&lt;/p&gt;</description>
+      <description>&lt;p&gt;色々書いてく〜〜&lt;/p&gt;</description>
     </item>
     <item>
       <title>About me</title>
