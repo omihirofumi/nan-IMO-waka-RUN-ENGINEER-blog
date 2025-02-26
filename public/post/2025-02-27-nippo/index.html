@@ -66,7 +66,7 @@
   "headline": "にっぽー",
   "description" : "LeetCodeのこの問題を↓で解いたけどどうなんだろうか。\n結合対象を減らすためにサブクエリでフィルタリングするようにしたけど、複雑になってしまった。\n",
   "inLanguage" : "en",
-  "wordCount":  142 ,
+  "wordCount":  224 ,
   "datePublished" : "2025-02-27T00:28:13\u002b09:00",
   "dateModified" : "2025-02-27T00:28:13\u002b09:00",
   "image" : "http:\/\/localhost:1313\/img\/avatar.png",
@@ -249,10 +249,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on February 27, 2025
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;142&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;224&nbsp;words
   
   
     
@@ -329,6 +329,49 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">temp</span><span class="w">
 </span></span></span></code></pre></div><p>大量のデータ用意してテストしてみたい。</p>
+<p>ちなみに、人気のある回答は<a href="https://leetcode.com/problems/movie-rating/solutions/5788717/simple-solution-using-union-and-cte">これ</a>みたい。<br>
+自分で考えたのと、この回答の実行計画をClaude-3.7-sonnetに比較させてみた。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="gu">### 実行速度の比較
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span><span class="k">-</span> 1番目のクエリ: 実行時間 0.318ミリ秒 <span class="p">&lt;</span> <span class="nt">自分で考えたやつ</span>
+</span></span><span class="line"><span class="cl"><span class="k">-</span> <span class="na">2番目のクエリ:</span> <span class="na">実行時間</span> <span class="na">1</span><span class="err">.</span><span class="na">486ミリ秒</span> <span class="err">&lt;</span> <span class="na">人気のある回答</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">2番目のクエリは1番目のクエリの約4</span><span class="err">.</span><span class="na">7倍の時間がかかっていることがわかります</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">### 主な違いと分析
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> <span class="gs">**アプローチの違い**</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">1番目のクエリはWITH句とRANK</span><span class="err">()</span><span class="na">ウィンドウ関数を使用</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">2番目のクエリはサブクエリとGROUP</span> <span class="na">BY</span> <span class="err">+</span> <span class="na">ソート</span> <span class="err">+</span> <span class="na">LIMITを使用</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">2.</span> <span class="gs">**実際のデータ処理**</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">どちらのクエリも2020年2月のデータがないため</span><span class="err">、</span><span class="na">映画部分は空の結果を返しています</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">最終的な結果行数はどちらも1行</span><span class="err">（</span><span class="na">最も評価回数の多いユーザーのみ</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">3.</span> <span class="gs">**メモリ使用**</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">2番目のクエリはより多くのメモリを使用しています</span><span class="err">（</span><span class="na">例</span><span class="err">：</span><span class="na">HashAggregateで73kB</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">しかし</span><span class="err">、</span><span class="na">データセットが小さいため</span><span class="err">、</span><span class="na">メモリ使用は問題になっていません</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">4.</span> <span class="gs">**行数の予測と実際**</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">2番目のクエリは行数の予測が実際と大きく異なっています</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">予測:</span> <span class="na">users</span> <span class="na">1270行</span><span class="err">、</span><span class="na">実際:</span> <span class="na">5行</span>
+</span></span><span class="line"><span class="cl">   <span class="k">-</span> <span class="na">統計情報の更新</span><span class="err">（</span><span class="na">ANALYZE</span><span class="err">）</span><span class="na">が必要かもしれません</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">### どちらが良いか？
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl"><span class="gs">**1番目のクエリ（WITH句とRANK()を使用したもの）の方が優れています**</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> <span class="gs">**実行速度**</span><span class="na">:</span> <span class="na">約5倍速い</span><span class="err">（</span><span class="na">0</span><span class="err">.</span><span class="na">318ms</span> <span class="na">vs</span> <span class="na">1</span><span class="err">.</span><span class="na">486ms</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="k">2.</span> <span class="gs">**SQLの明瞭さ**</span><span class="na">:</span> <span class="na">ウィンドウ関数を使用することでランク付けの意図が明確</span>
+</span></span><span class="line"><span class="cl"><span class="k">3.</span> <span class="gs">**効率性**</span><span class="na">:</span> <span class="na">少ないステップでより速く結果を生成</span>
+</span></span><span class="line"><span class="cl"><span class="k">4.</span> <span class="gs">**スケーラビリティ**</span><span class="na">:</span> <span class="na">データ量が増えた場合も効率的に動作する可能性が高い</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">実際の運用では</span><span class="err">、</span><span class="na">パフォーマンスの差は以下の要因によってさらに大きくなる可能性があります</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl"><span class="k">-</span> <span class="na">データ量の増加</span>
+</span></span><span class="line"><span class="cl"><span class="k">-</span> <span class="na">同時実行数の増加</span>
+</span></span><span class="line"><span class="cl"><span class="k">-</span> <span class="na">インデックスの活用</span><span class="err">（</span><span class="na">1番目のクエリはインデックスをより効率的に使用</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">結論として</span><span class="err">、</span><span class="na">1番目のクエリ</span><span class="err">（</span><span class="na">WITH句とRANK</span><span class="err">()</span><span class="na">を使用した方</span><span class="err">）</span><span class="na">を採用することをお勧めします</span><span class="err">。</span><span class="na">より効率的で</span><span class="err">、</span><span class="na">意図も明確です</span><span class="err">。</span><span class="na">ただし</span><span class="err">、</span><span class="na">日付条件を実際のデータに合わせて調整する必要があります</span><span class="err">。</span>
+</span></span></code></pre></div><p>わーい。嬉しい。SQL苦手意識なくなってきた。</p>
 <hr>
 <h2 id="いま読んでいる本">いま読んでいる本</h2>
 <p><a href="https://www.amazon.co.jp/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA%E3%81%A8%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%88%E3%81%AE%E6%88%90%E5%8A%9F%E3%82%92%E5%B0%8E%E3%81%8F-%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0-%E3%82%B8%E3%83%A3%E3%83%AC%E3%83%83%E3%83%89%E3%83%BB%E3%83%90%E3%83%BC%E3%83%86%E3%82%A3/dp/4800590833">ユーザーの問題解決とプロダクトの成功を導く　エンジニアのためのドキュメントライティング | ジャレッド・バーティ, ザッカリー・サラ・コ―ライセン, ジェン・ランボーン, デービッド・ヌーニェス, ハイディ・ウォーターハウス, 岩瀬 義昌 |本 | 通販 | Amazon</a></p>
@@ -340,6 +383,9 @@
 →自分をユーザと見立てる。知識の呪いに注意する。</p>
 <blockquote>
 <p>フリクションログ：ユーザがアプリケーションを使う際にどのような問題に直面しているかを記録するログ</p></blockquote>
+<hr>
+<h2 id="remix-auth">Remix-Auth</h2>
+<p>Remix-Authと OAuth2で認証というか認可を実装したけどあんまりネットに情報が転がってなかったからZennに書くか。</p>
 
         
           <div class="blog-tags">

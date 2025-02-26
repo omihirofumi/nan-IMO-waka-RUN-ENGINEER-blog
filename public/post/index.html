@@ -240,10 +240,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on February 27, 2025
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;120&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;221&nbsp;words
   
   
     
@@ -258,57 +258,8 @@
     <div class="post-entry">
         
         <p>LeetCodeの<a href="https://leetcode.com/problems/movie-rating/description/?envType=problem-list-v2&amp;envId=rvchvayr">この問題</a>を↓で解いたけどどうなんだろうか。<br>
-結合対象を減らすためにサブクエリでフィルタリングするようにしたけど、複雑になってしまった。<br>
-大量のデータ用意してテストしてみたい。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WITH</span><span class="w"> </span><span class="n">RankedUsers</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">user_id</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rank</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">MovieRating</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_id</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RankedMovies</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">movie_id</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rank</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">MovieRating</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2020-02-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2020-02-29&#39;</span><span class="w">   
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">movie_id</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">temp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">SELECT</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">U</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">results</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">Users</span><span class="w"> </span><span class="n">U</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">SELECT</span><span class="w"> </span><span class="n">user_id</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">FROM</span><span class="w"> </span><span class="n">RankedUsers</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="n">RU</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">U</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RU</span><span class="p">.</span><span class="n">user_id</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">U</span><span class="p">.</span><span class="n">name</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">SELECT</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">M</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">results</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">Movies</span><span class="w"> </span><span class="n">M</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">SELECT</span><span class="w"> </span><span class="n">movie_id</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">FROM</span><span class="w"> </span><span class="n">RankedMovies</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="n">RM</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">M</span><span class="p">.</span><span class="n">movie_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RM</span><span class="p">.</span><span class="n">movie_id</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">M</span><span class="p">.</span><span class="n">title</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">temp</span><span class="w">
-</span></span></span></code></pre></div>
+結合対象を減らすためにサブクエリでフィルタリングするようにしたけど、複雑になってしまった。</p>
+        <a href="http://localhost:1313/post/2025-02-27-nippo/" class="post-read-more">[Read More]</a>
         
     </div>
 
