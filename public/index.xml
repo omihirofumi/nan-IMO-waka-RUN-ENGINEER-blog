@@ -8,8 +8,15 @@
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
     <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
-    <lastBuildDate>Thu, 27 Feb 2025 00:28:13 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 05 Mar 2025 00:00:16 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>にっぽー</title>
+      <link>http://localhost:1313/post/2025-03-05-nippo/</link>
+      <pubDate>Wed, 05 Mar 2025 00:00:16 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/post/2025-03-05-nippo/</guid>
+      <description>&lt;p&gt;neovimで日本語予測変換して削除すると、1文字多く消されるっていう問題があったけど解消方法よくわからず。&lt;br&gt;&#xA;ghosttyのIMEの設定とかが影響していると思うけど、Macのライブ変換をONにしたら解消したからこれでいいや。&lt;br&gt;&#xA;ライブ変換食わず嫌いしてたけど、いいねこれ。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>にっぽー</title>
       <link>http://localhost:1313/post/2025-02-27-nippo/</link>
