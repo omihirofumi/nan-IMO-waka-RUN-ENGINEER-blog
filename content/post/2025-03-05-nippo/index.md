@@ -33,6 +33,7 @@ Google CloudのIAPについてもやっと理解できた。
 IAPは、Google Cloudのサービスに対して、IAPプロキシを通してアクセス制御を行うサービス。  
 IAPプロキシは、Googleサインインをして認可（Authentication）を行い、その後IAMに基づいた認証（Authorization）を行う。ただそれだけ。
 {{< figure src="IAP.png" alt="IAP" >}}
+[画像出典: Google Cloud IAP 概要ドキュメント](https://cloud.google.com/iap/docs/concepts-overview?hl=ja)
 
 ---
 今読んでいる。[ユーザーの問題解決とプロダクトの成功を導く　エンジニアのためのドキュメントライティング | ジャレッド・バーティ, ザッカリー・サラ・コ―ライセン, ジェン・ランボーン, デービッド・ヌーニェス, ハイディ・ウォーターハウス, 岩瀬 義昌 |本 | 通販 | Amazon](https://www.amazon.co.jp/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA%E3%81%A8%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%88%E3%81%AE%E6%88%90%E5%8A%9F%E3%82%92%E5%B0%8E%E3%81%8F-%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0-%E3%82%B8%E3%83%A3%E3%83%AC%E3%83%83%E3%83%89%E3%83%BB%E3%83%90%E3%83%BC%E3%83%86%E3%82%A3/dp/4800590833)  
