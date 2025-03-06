@@ -191,7 +191,7 @@
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on March 5, 2025
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 7, 2025
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;0&nbsp;minutes
@@ -224,6 +224,113 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="http://localhost:1313/post/2025-02-01-dagger/">
+        <h2 class="post-title">Daggerっていうリリースパイプラインを作って実行するツール触った</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 1, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;168&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;omihirofumi
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><a href="https://dagger.io/">Dagger</a>っていうリリースパイプラインをYamlとかじゃなくてコードで記述するツールを知ったので試してみる。
+公式の<a href="https://docs.dagger.io/quickstart/daggerize">Quickstart</a>をやってみた。</p>
+<p>Go, Python, TypeScriptで記述できて今回は久しぶりだしGoで書いた。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;math&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;math/rand&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;dagger/hello-dagger/internal/dagger&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">HelloDagger</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Publish the application container after building and testing it on-the-fly</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">HelloDagger</span><span class="p">)</span> <span class="nf">Publish</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">source</span> <span class="o">*</span><span class="nx">dagger</span><span class="p">.</span><span class="nx">Directory</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">Test</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nf">Build</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">Publish</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;ttl.sh/hello-dagger-%.0f&#34;</span><span class="p">,</span> <span class="nx">math</span><span class="p">.</span><span class="nf">Floor</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span><span class="o">*</span><span class="mi">10000000</span><span class="p">)))</span> <span class="c1">//#nosec</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Build the application container</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">HelloDagger</span><span class="p">)</span> <span class="nf">Build</span><span class="p">(</span><span class="nx">source</span> <span class="o">*</span><span class="nx">dagger</span><span class="p">.</span><span class="nx">Directory</span><span class="p">)</span> <span class="o">*</span><span class="nx">dagger</span><span class="p">.</span><span class="nx">Container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">build</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">BuildEnv</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithExec</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;npm&#34;</span><span class="p">,</span> <span class="s">&#34;run&#34;</span><span class="p">,</span> <span class="s">&#34;build&#34;</span><span class="p">}).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">Directory</span><span class="p">(</span><span class="s">&#34;./dist&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">dag</span><span class="p">.</span><span class="nf">Container</span><span class="p">().</span><span class="nf">From</span><span class="p">(</span><span class="s">&#34;nginx:1.25-alpine&#34;</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithDirectory</span><span class="p">(</span><span class="s">&#34;/usr/share/nginx/html&#34;</span><span class="p">,</span> <span class="nx">build</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithExposedPort</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Return the result of running unit tests</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">HelloDagger</span><span class="p">)</span> <span class="nf">Test</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">source</span> <span class="o">*</span><span class="nx">dagger</span><span class="p">.</span><span class="nx">Directory</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nf">BuildEnv</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithExec</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;npm&#34;</span><span class="p">,</span> <span class="s">&#34;run&#34;</span><span class="p">,</span> <span class="s">&#34;test:unit&#34;</span><span class="p">,</span> <span class="s">&#34;run&#34;</span><span class="p">}).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">Stdout</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Build a ready-to-use development environment</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">HelloDagger</span><span class="p">)</span> <span class="nf">BuildEnv</span><span class="p">(</span><span class="nx">source</span> <span class="o">*</span><span class="nx">dagger</span><span class="p">.</span><span class="nx">Directory</span><span class="p">)</span> <span class="o">*</span><span class="nx">dagger</span><span class="p">.</span><span class="nx">Container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">nodeCache</span> <span class="o">:=</span> <span class="nx">dag</span><span class="p">.</span><span class="nf">CacheVolume</span><span class="p">(</span><span class="s">&#34;node&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">dag</span><span class="p">.</span><span class="nf">Container</span><span class="p">().</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">From</span><span class="p">(</span><span class="s">&#34;node:21-slim&#34;</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithDirectory</span><span class="p">(</span><span class="s">&#34;/src&#34;</span><span class="p">,</span> <span class="nx">source</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithMountedCache</span><span class="p">(</span><span class="s">&#34;/root/.npm&#34;</span><span class="p">,</span> <span class="nx">nodeCache</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithWorkdir</span><span class="p">(</span><span class="s">&#34;/src&#34;</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">WithExec</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;npm&#34;</span><span class="p">,</span> <span class="s">&#34;install&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>こういう感じで記述してくみたい。</p>
+        <a href="http://localhost:1313/post/2025-02-01-dagger/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+       
+       <a href="http://localhost:1313/tags/cicd/">cicd</a>&nbsp;
+        
+       
+       <a href="http://localhost:1313/tags/tool/">tool</a>&nbsp;
+        
+       
+       <a href="http://localhost:1313/tags/messing-garound/">messing garound </a>&nbsp;
+         
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="http://localhost:1313/post/2025-01-29-first-post/">
