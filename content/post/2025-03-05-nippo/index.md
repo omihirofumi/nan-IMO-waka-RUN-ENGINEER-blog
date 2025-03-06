@@ -31,7 +31,8 @@ IDトークンは発行を依頼したクライアントの情報を含んでい
 ---
 Google CloudのIAPについてもやっと理解できた。  
 IAPは、Google Cloudのサービスに対して、IAPプロキシを通してアクセス制御を行うサービス。  
-IAPプロキシは、Googleサインインをして認可（Authentication）を行い、その後IAMに基づいた認証（Authorization）を行う。ただそれだけ。
+IAPプロキシは、Googleサインインをして認可（Authorization 
+）を行い、その後IAMに基づいた認証（Authentication）を行う。ただそれだけ。
 {{< figure src="IAP.png" alt="IAP" >}}
 [画像出典: Google Cloud IAP 概要ドキュメント](https://cloud.google.com/iap/docs/concepts-overview?hl=ja)
 
