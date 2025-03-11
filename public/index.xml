@@ -8,8 +8,15 @@
     <language>en</language>
     <managingEditor>omihirofumi@gmail.com (omihirofumi)</managingEditor>
     <webMaster>omihirofumi@gmail.com (omihirofumi)</webMaster>
-    <lastBuildDate>Sun, 09 Mar 2025 21:24:46 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 11 Mar 2025 23:46:35 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>にっぽー</title>
+      <link>http://localhost:1313/post/2025-03-11-nippo/</link>
+      <pubDate>Tue, 11 Mar 2025 23:46:35 +0900</pubDate><author>omihirofumi@gmail.com (omihirofumi)</author>
+      <guid>http://localhost:1313/post/2025-03-11-nippo/</guid>
+      <description>&lt;h2 id=&#34;まずは反省会&#34;&gt;まずは反省会&lt;/h2&gt;&#xA;&lt;p&gt;顧客にほんとはここまでにこういうの出来てて欲しかったんだよね、みたいなことを言わせてしまった。&lt;/p&gt;&#xA;&lt;h3 id=&#34;原因&#34;&gt;原因&lt;/h3&gt;</description>
+    </item>
     <item>
       <title>にっぽー</title>
       <link>http://localhost:1313/post/2025-03-09-nippo/</link>
