@@ -220,6 +220,121 @@
           
           
             <article class="post-preview">
+    <a href="http://localhost:1313/post/2025-03-14-nippo/">
+        <h2 class="post-title">にっぽー</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 14, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;72&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;omihirofumi
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h2 id="今読んでる">今読んでる</h2>
+<p><a href="https://www.amazon.co.jp/%E6%88%A6%E7%95%A5%E7%9A%84%E6%80%9D%E8%80%83%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0-%E7%9B%AE%E6%A8%99%E5%AE%9F%E7%8F%BE%E5%8A%9B%E3%81%8C%E9%A3%9B%E8%BA%8D%E7%9A%84%E3%81%AB%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B37%E5%95%8F-PHP%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E6%96%B0%E6%9B%B8-%E4%B8%89%E5%9D%82-%E5%81%A5/dp/4569850774">戦略的思考トレーニング 目標実現力が飛躍的にアップする37問 (PHPビジネス新書) | 三坂 健 |本 | 通販 | Amazon</a><br>
+まだ読み始めたばかりだけど、</p>
+<ul>
+<li>目標を達成するためにはどうするか
+<ul>
+<li>戦略を立てる
+<ul>
+<li>戦略とは何か：目標を達成するためのシナリオ</li>
+</ul>
+</li>
+<li>作戦
+<ul>
+<li>シナリオを分解した時の各プロジェクト</li>
+<li>ストーリーでいう各章</li>
+</ul>
+</li>
+<li>戦術
+<ul>
+<li>プロジェクトをうまく成功させるための方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ドメイン駆動開発">ドメイン駆動開発</h2>
+<h3 id="二つの案件で導入してみての所感">二つの案件で導入してみての所感</h3>
+<p>なんでもかんでも値オブジェクトにしてってやるのは結構きつい。<br>
+きついっていうのはただめんどくさいってこと。<br>
+ここでよくないのは、何でもかんでも値オブジェクトを作ることではなくて、<strong>設計せず</strong>になんでも値オブジェクトにしてしまうこと。<br>
+ドメイン駆動開発で最も大事なのは、<strong>設計・モデリング</strong>。これに尽きる。<br>
+まあ、でもドメイン駆動開発は改善していくことが前提なので、最初から完璧な設計をする必要はない。</p>
+<h2 id="app-runner-vs-ecs-for-fargate">App Runner vs ECS for Fargate</h2>
+<p><a href="/post/2025-03-11-nippo">前に</a>、App Runner vs ECS for FargateでFargateを選んだが、結局App Runnerになった。<br>
+理由は、httpsでwebサービスを公開したくて、ただドメインは自動で払い出して欲しかった。<br>
+App Runnerはここを面倒見てくれるので、App Runnerにした。<br>
+なので、VPC ConnectorとNAT Gatewayを使ってVPCから外部に出れるようにした。</p>
+<p>Google CloudだとCloud Runを基本的に使っていてAWSほどネットワークを意識しないので、ネットワーク意識して使うのも楽しいね。</p>
+<h2 id="gitリポジトリに繋げない状態でprivate-subnetのrdsにマイグレートする方法">Gitリポジトリに繋げない状態で、Private SubnetのRDSにマイグレートする方法</h2>
+<p>現状、BacklogのGitでやっていて、今後Github or Gitlabに移行する予定。<br>
+なので、一旦一番楽にマイグレートできる構成がよかった。<br>
+CI/CDはやったほうがいいけど、検証段階であったりしてCI/CDの構築コストがメリットを上回るので、Githubなどに移行できたらCI/CDを構築する予定。</p>
+<ul>
+<li>踏み台サーバーとしてEC2をたて、ローカルからRDSにポートフォワードで繋げる←これにした
+<ul>
+<li>すごく単純で、ローカルから繋げるので楽</li>
+<li>IaCするほどでもないので、コンソールでぽちぽちするのが一番簡単だったこれを採用</li>
+</ul>
+</li>
+<li>EC2にDockerを入れて、イメージプルして、マイグレート実行する
+<ul>
+<li>イメージビルドにして、LambdaをVPCに繋げておいて、マイグレート実行する</li>
+<li>Dockerのインストールがめんどくさい。ユーザデータで書いちゃえばいいけど。</li>
+</ul>
+</li>
+<li>Lambdaにイメージデプロイして、マイグレート実行する
+<ul>
+<li>イメージビルドにして、LambdaをVPCに繋げておいて、マイグレート実行するだけでいいので実行時が楽</li>
+<li>lambda用のランタイムは癖があって、イメージを作るのがめんどくさい</li>
+</ul>
+</li>
+<li>Code Buildでイメージビルドして、マイグレート実行する
+<ul>
+<li>今後CI/CDを構築する時の土台になれる</li>
+<li>VPCやNAT Gatewayの設定がめんどくさかった</li>
+</ul>
+</li>
+</ul>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+       
+       <a href="http://localhost:1313/tags/%E3%81%AB%E3%81%A3%E3%81%BD%E3%83%BC/">にっぽー</a>&nbsp;
+         
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
     <a href="http://localhost:1313/post/2025-03-11-nippo/">
         <h2 class="post-title">にっぽー</h2>
         
@@ -716,60 +831,6 @@ ghosttyのIMEの設定とかが影響していると思うけど、Macのライ�
         
        
        <a href="http://localhost:1313/tags/%E7%AB%B6%E3%83%97%E3%83%AD/">競プロ</a>&nbsp;
-         
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="http://localhost:1313/post/2025-02-09-kyo-pro/">
-        <h2 class="post-title">競プロを始めた</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on February 9, 2025
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;omihirofumi
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>最近ゴリゴリにロジックを書くことなくなってて、寂しかったから競プロ始めた。<br>
-やっぱり、プログラミングは楽しいね。<br>
-まだ練習しかしてないけど。<br>
-そして、難しい。楽しい。</p>
-
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="http://localhost:1313/tags/%E7%AB%B6%E3%83%97%E3%83%AD/">競プロ</a>&nbsp;
-        
-       
-       <a href="http://localhost:1313/tags/%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8D/">つぶやき</a>&nbsp;
          
     </div>
     
